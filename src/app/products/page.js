@@ -47,7 +47,7 @@ const Products = () => {
     e.preventDefault();
 
     const method = form._id ? "PUT" : "POST";
-    const url = form._id ? `${BASE_URL}/products/${form._id}` : BASE_URL;
+    const url = form._id ? `${BASE_URL}/products/${form._id}` : `${BASE_URL}/products`;
 
     const payload = { ...form };
     if (!form._id) delete payload._id;
