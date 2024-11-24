@@ -6,10 +6,11 @@ import { useRouter } from "next/navigation"; // Ensure this is the correct impor
 const Register = () => {
   const [form, setForm] = useState({ username: "", password: "" });
   const router = useRouter(); // useRouter hook here
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:5000/api/auth/register", {
+    const res = await fetch(`${BASE_URL}/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),

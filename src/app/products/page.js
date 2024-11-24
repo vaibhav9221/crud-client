@@ -25,7 +25,7 @@ const Products = () => {
     const token = Cookies.get("token"); // Retrieve token from cookies
 
     try {
-      const res = await fetch(BASE_URL, {
+      const res = await fetch(`${BASE_URL}/products`, {
         headers: {
           Authorization: `Bearer ${token}`, // Send the JWT token
         },
@@ -47,7 +47,7 @@ const Products = () => {
     e.preventDefault();
 
     const method = form._id ? "PUT" : "POST";
-    const url = form._id ? `${BASE_URL}/${form._id}` : BASE_URL;
+    const url = form._id ? `${BASE_URL}/products/${form._id}` : BASE_URL;
 
     const payload = { ...form };
     if (!form._id) delete payload._id;
@@ -105,7 +105,7 @@ const Products = () => {
     }
 
     try {
-      const res = await fetch(`${BASE_URL}/${id}`, {
+      const res = await fetch(`${BASE_URL}/products/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`, // Add token to headers
